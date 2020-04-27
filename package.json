@@ -1,0 +1,17 @@
+{
+  "name": "NewsMaker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/fluffy-mods/NewsMaker.git",
+  "author": "Fluffy <fluffy.l2032@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "docopt": "^0.6.2",
+    "mz": "^2.7.0",
+    "simple-git": "^1.132.0"
+  },
+  "devDependencies": {
+    "@types/docopt": "^0.6.31",
+    "@types/mz": "^2.7.0"
+  }
+}
