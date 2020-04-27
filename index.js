@@ -8,11 +8,31 @@ const git = new Git(process.cwd());
 
 async function resetTags() {
     try {
-        console.log(await git.fetch("origin", "+refs/tags/*:refs/tags/*", "--prune"));
-        console.log(await git.fetch("origin", null, "--tags"));
+        await git.fetch("origin", ["--prune", "+refs/tags/*:refs/tags"]);
+        await git.fetch("origin", ["--tags"]);
     } catch (err) {
         console.error(err);
     }
 }
 
-resetTags();
+async function getCurrentGitTag() {
+    try {
+        const tags = await git.tags()
+        console.log({ tags })
+        return tags.latest;
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+async function getChangeNotes() {
+    try {
+        const notes = await git.log({ from: currentGitTag, to: "HEAD" })
+        console.log({ notes })
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+// getChangeNotes();
+getCurrentGitTag()
