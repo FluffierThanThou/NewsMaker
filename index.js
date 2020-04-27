@@ -15,10 +15,9 @@ async function resetTags() {
     }
 }
 
-async function getCurrentGitTag() {
+async function latestTag() {
     try {
         const tags = await git.tags()
-        console.log({ tags })
         return tags.latest;
     } catch (err) {
         console.error(err)
@@ -27,12 +26,12 @@ async function getCurrentGitTag() {
 
 async function getChangeNotes() {
     try {
-        const notes = await git.log({ from: currentGitTag, to: "HEAD" })
+        const notes = await git.log({ from: await latestTag(), to: "HEAD" })
         console.log({ notes })
     } catch (err) {
         console.error(err)
     }
 }
 
-// getChangeNotes();
-getCurrentGitTag()
+console.log(latestTag());
+getChangeNotes()
