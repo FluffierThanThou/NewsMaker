@@ -34,4 +34,4 @@ async function getChangeNotes() {
 }
 
 console.log(latestTag());
-getChangeNotes()
+getChangeNotes();
